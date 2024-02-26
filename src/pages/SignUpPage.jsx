@@ -28,12 +28,9 @@ const handleSignUp = async (e) => {
   e.preventDefault();
   try {
     const response = await registerUser(formData);
-    console.log('Registration Response:', response);
 
     if (response.data) {
       const { token, userId } = response.data;
-      console.log('Token:', token);
-      console.log('User ID:', userId);
 
       localStorage.setItem('token', token);
       localStorage.setItem('userId', JSON.stringify(userId.user_id));

@@ -27,8 +27,7 @@ const SignInPage = () => {
     e.preventDefault();
     try {
       const response = await loginUser(formData);
-      console.log('Server Response:', response);
-      console.log('Login Successful:', response);
+
 
       const { token, userId } = response.data;
       localStorage.setItem('token', token);

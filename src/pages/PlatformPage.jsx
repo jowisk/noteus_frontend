@@ -66,7 +66,6 @@ const PlatformPage = () => {
   }, []);
   
   const handleFilterChange = (filterText) => {
-    console.log(filterText)
     setFilterText(filterText);
   };
   

@@ -21,7 +21,6 @@ const NoteForm = ({ visible, visibleHandler, noteFormState, setNoteFormState, ha
   };
 
   const setColorHandler = (selectedColor) => {
-    console.log(selectedColor)
     setNoteFormState((prev) => ({ ...prev, color: selectedColor }));
   };
 

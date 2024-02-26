@@ -22,9 +22,8 @@ export const addNote = async (note) => {
     try {
       const token = getTokenFromLocalStorage();
       const user_id = getUserIdFromLocalStorage()
-      console.log('Token from localStorage:', token); // Check this line
-      let res = await axios.post(`${apiUrl}/notes/post`, { ...note, user_id }, createAuthorizedRequestConfig(token));      console.log('API Response:', res.data);
-  
+      
+      let res = await axios.post(`${apiUrl}/notes/post`, { ...note, user_id }, createAuthorizedRequestConfig(token));  
       return res.data;
     } catch (e) {
       alert(`${e}`);
@@ -72,7 +71,6 @@ export const deleteNote = async (uuid) => {
 export const registerUser = async (user) => {
   try {
     let res = await axios.post(`${apiUrl}/auth/register`, user);
-    console.log('reg' +res)
     return res;
   } catch (e) {
     alert('error' + `${e}`);
@@ -82,7 +80,6 @@ export const registerUser = async (user) => {
 export const loginUser = async (user) => {
   try {
     let res = await axios.post(`${apiUrl}/auth/login`, user);
-    console.log('log' + res.data  )
     return res;
   } catch (e) {
     alert('error' + `${e}`);
