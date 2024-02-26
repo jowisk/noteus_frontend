@@ -1,0 +1,7 @@
+
+.triangle {
+    width: 25px;
+    height: 40px;
+    aspect-ratio: 1/cos(1deg);
+    clip-path: polygon(50% 0,100% 100%,0 100%);;
+  }
