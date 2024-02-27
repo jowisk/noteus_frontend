@@ -23,7 +23,7 @@ export const addNote = async (note) => {
       const token = getTokenFromLocalStorage();
       const user_id = getUserIdFromLocalStorage()
       
-      let res = await axios.post(`${apiUrl}/notes/post`, { ...note, user_id }, createAuthorizedRequestConfig(token));  
+      let res = await axios.post(`${apiUrl}notes/post`, { ...note, user_id }, createAuthorizedRequestConfig(token));  
       return res.data;
     } catch (e) {
       alert(`${e}`);
@@ -35,7 +35,7 @@ export const addNote = async (note) => {
       const token = getTokenFromLocalStorage();
       const user_id = getUserIdFromLocalStorage();
   
-      let res = await axios.get(`${apiUrl}/notes/get`, {
+      let res = await axios.get(`${apiUrl}notes/get`, {
         ...createAuthorizedRequestConfig(token),
         params: {
           user_id: user_id,
