@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiUrl = process.env.API_URL;
+const apiUrl ='https://noteus-backend.onrender.com/'
 
 const createAuthorizedRequestConfig = (token, user_id) => ({
     headers: {
