@@ -51,7 +51,7 @@ export const addNote = async (note) => {
 export const updateNote = async (uuid, updatedNoteData) => {
     try {
     const token = getTokenFromLocalStorage();
-    let res = await axios.put(`${apiUrl}/notes/update/${uuid}`, updatedNoteData, createAuthorizedRequestConfig(token));
+    let res = await axios.put(`${apiUrl}notes/update/${uuid}`, updatedNoteData, createAuthorizedRequestConfig(token));
     return res.data;
   } catch (e) {
     alert('error' + `${e}`);
@@ -61,7 +61,7 @@ export const updateNote = async (uuid, updatedNoteData) => {
 export const deleteNote = async (uuid) => {
   try {
     const token = getTokenFromLocalStorage();
-    let res = await axios.delete(`${apiUrl}/notes/delete/${uuid}`, createAuthorizedRequestConfig(token));
+    let res = await axios.delete(`${apiUrl}notes/delete/${uuid}`, createAuthorizedRequestConfig(token));
     return res.data;
   } catch (e) {
       alert('error' + `${e}`);
@@ -70,7 +70,7 @@ export const deleteNote = async (uuid) => {
 
 export const registerUser = async (user) => {
   try {
-    let res = await axios.post(`${apiUrl}/auth/register`, user);
+    let res = await axios.post(`${apiUrl}auth/register`, user);
     return res;
   } catch (e) {
     alert('error' + `${e}`);
@@ -79,7 +79,7 @@ export const registerUser = async (user) => {
 
 export const loginUser = async (user) => {
   try {
-    let res = await axios.post(`${apiUrl}/auth/login`, user);
+    let res = await axios.post(`${apiUrl}auth/login`, user);
     return res;
   } catch (e) {
     alert('error' + `${e}`);
