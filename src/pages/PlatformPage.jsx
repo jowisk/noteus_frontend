@@ -31,9 +31,9 @@ const PlatformPage = () => {
   
       // Apply filter to allNotes
       const filteredNotes = allNotes.filter(note => {
-        // Check if note text or any tag includes the filterText and if note has all selected categories
+        // Check if note text or any tag includes the filterText (case insensitive) and if note has all selected categories
         return (
-          (note.text.includes(filterText) || note.tags.some(tag => tag.includes(filterText))) &&
+          (note.text.toLowerCase().includes(filterText.toLowerCase()) || note.tags.some(tag => tag.toLowerCase().includes(filterText.toLowerCase()))) &&
           (filterCategory.length === 0 || filterCategory.every(category => note.categories.includes(category)))
         );
       });
@@ -48,7 +48,6 @@ const PlatformPage = () => {
       console.error('Error fetching notes:', error);
     }
   }, [filterText, filterCategory]);
-  
   
   
   const handleCategoryClick = useCallback((category) => {
