@@ -25,13 +25,10 @@ const PlatformPage = () => {
   const fetchNotes = useCallback(async () => {
     try {
       const { archivedNotes, nonArchivedNotes } = await readNotes();
-  
-      // Combine non-archived and archived notes for filtering
+
       const allNotes = [...nonArchivedNotes, ...archivedNotes];
   
-      // Apply filter to allNotes
       const filteredNotes = allNotes.filter(note => {
-        // Check if note text or any tag includes the filterText (case insensitive) and if note has all selected categories
         return (
           (note.text.toLowerCase().includes(filterText.toLowerCase()) || note.tags.some(tag => tag.toLowerCase().includes(filterText.toLowerCase()))) &&
           (filterCategory.length === 0 || filterCategory.every(category => note.categories.includes(category)))
@@ -55,10 +52,8 @@ const PlatformPage = () => {
       const isCategorySelected = prevCategories.includes(category);
       
       if (isCategorySelected) {
-        // If the category is already in the filter, remove it
         return prevCategories.filter((cat) => cat !== category);
       } else {
-        // If the category is not in the filter, add it
         return [...prevCategories, category];
       }
     });
@@ -137,7 +132,7 @@ const PlatformPage = () => {
               id={note.uuid}
               text={note.text}
               tags={note.tags}
-              categories={note.categories} // Pass the categories to Note
+              categories={note.categories}
               archived={note.archived}
               color={note.color}
               index={index}

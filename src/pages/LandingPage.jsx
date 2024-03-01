@@ -1,12 +1,21 @@
-import { useNavigate } from 'react-router-dom'
-import { Medal } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import NavBar from '@/components/NavBar'
-import Footer from '@/components/Footer'
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Medal } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import NavBar from '@/components/NavBar';
+import Footer from '@/components/Footer';
+import { useAuth } from '@/authContext';
 
 const LandingPage = () => {
+  const navigate = useNavigate();
+  const { authenticated } = useAuth();
 
-    const navigate = useNavigate()
+  // Check authentication status on component mount
+  useEffect(() => {
+    if (authenticated) {
+      navigate('/platform');
+    }
+  }, [authenticated, navigate]);
 
   return (
     <>

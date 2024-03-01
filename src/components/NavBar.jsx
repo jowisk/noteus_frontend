@@ -2,15 +2,26 @@ import { useNavigate } from 'react-router-dom'
 import Logo from '@/components/Logo'
 import { Button } from './ui/button'
 import { ClipboardCheck, Lightbulb, Salad } from 'lucide-react'
+import { useAuth } from '@/authContext'; // Import the useAuth hook
 import Note from './Note'
 import { useState } from 'react'
 
 const NavBar = ({ landing, platform, visibleHandler, archivedOpenHandler, handleFilterChange, handleCategoryClick, filterCategory }) => {
   const navigate = useNavigate();
-
+  const { authenticated, setAuthenticated } = useAuth(); // Use the useAuth hook
   const isSelected = (category) => {
     return filterCategory.includes(category);
   }
+
+  const handleLogout = () => {
+    // Perform logout actions, such as revoking authentication
+    setAuthenticated(false);
+    // You may also want to clear any stored tokens or user data from local storage
+    localStorage.removeItem('token');
+    localStorage.removeItem('userId');
+    // Redirect the user to the landing page or any other desired page
+    navigate('/');
+  };
   
   return (
     <div className='fixed z-5 top-0 w-full h-14 px-4 border-b shadow-sm bg-white flex items-center'>
@@ -61,6 +72,11 @@ const NavBar = ({ landing, platform, visibleHandler, archivedOpenHandler, handle
               placeholder='Search for notes, tags...'
               className='border border-1 rounded-md px-1 h-10'
             />
+            {authenticated && (
+              <Button size='sm' onClick={handleLogout}>
+                Logout
+              </Button>
+            )}
           </div>
         )}
       </div>
