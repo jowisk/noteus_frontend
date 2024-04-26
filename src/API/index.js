@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiUrl ='https://noteus-backend.onrender.com/'
+const apiUrl ='https://noteus-backend-h2wtgld65a-uc.a.run.app'
 
 const createAuthorizedRequestConfig = (token, user_id) => ({
     headers: {
